@@ -1,0 +1,71 @@
+<div>
+  <h2>Reverse Flow Calculator</h2>
+  <form [formGroup]="tankDimensionForm">
+    <div style="display: flex;">
+      <mat-form-field appearance="standard" style="width: 40%; margin: 0% 5%;">
+        <mat-label>Width</mat-label>
+        <input matInput placeholder="In inches" formControlName="width">
+        <mat-hint>interior width of tank</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="standard" style="width: 40%; margin: 0;">
+        <mat-label>Length</mat-label>
+        <input matInput placeholder="In inches" formControlName="length">
+        <mat-hint>interior length of tank</mat-hint>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div *ngIf="cookChamberVolume" style="margin-top: 5%;" class="flexSomeShit">
+    <div class="result">
+      <label>Cook Chamber Volume</label>
+      <p>{{cookChamberVolume | number}} Cubic Inches</p>
+    </div>
+
+    <div class="result">
+      <label>Firebox Cook Chamber Cutout Area</label>
+      <p>{{fireboxCookChamberCutoutArea | number}} Square Inches</p>
+    </div>
+
+    <div class="result">
+      <label>Area under the RF plate</label>
+      <p>{{areaUnderRfPlate | number}} Square Inches</p>
+    </div>
+
+    <div class="result">
+      <label>Area at end of the RF plate</label>
+      <p>{{areaAtEndOfRfPlate | number}} Square Inches</p>
+    </div>
+
+    <div class="result">
+      <label>Minimum Firebox Volume</label>
+      <p>{{minimumFireboxVolume | number}} Cubic Inches</p>
+    </div>
+
+    <div class="result">
+      <label>Firebox air inlets area</label>
+      <p>{{fireboxAirInlets | number}} Square Inches</p>
+    </div>
+
+    <div class="result">
+      <label>Exhaust stack volume above cook chamber</label>
+      <p>{{exhaustStackVolume | number}} Cubic Inches</p>
+    </div>
+  </div>
+
+  <form [formGroup]="exhaustStackForm" *ngIf="cookChamberVolume">
+    <div style="display: flex;">
+      <mat-form-field appearance="standard" style="width: 40%; margin: 10% 5% 0 5%;">
+        <mat-label>Diameter</mat-label>
+        <input matInput placeholder="In inches" formControlName="diameter">
+        <mat-hint>exhaust stack diameter in inches</mat-hint>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div *ngIf="exhaustStackLength" style="margin-top: 5%;" class="flexSomeShit">
+    <div class="result">
+      <label>Exhaust stack length</label>
+      <p>{{exhaustStackLength | number}} Inches</p>
+    </div>
+  </div>
+</div>
